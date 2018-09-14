@@ -51,6 +51,10 @@ summary { /* 1 */
     width: 90%;
 }
 
+.empty {
+    display: none;
+}
+
 ul {
   list-style-type: none;
 }
