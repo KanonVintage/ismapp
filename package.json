@@ -1,14 +1,14 @@
 {
-  "name": "MERN-boilerplate",
+  "name": "Girafary",
   "version": "1.0.0",
-  "description": "MERN stack project boilerplate",
-  "author": "Eugene Cheung",
+  "description": "Distributed Systems project",
+  "author": "Guido Duchi",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arkon/MERN-boilerplate.git"
+    "url": "https://github.com/KanonVintage/girafary.git"
   },
   "license": "MIT",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "webpack -p --progress --profile --colors && node server",
     "start:dev": "node server"
