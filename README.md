@@ -1,33 +1,112 @@
-# MERN-boilerplate
+<img src="https://cloud.githubusercontent.com/assets/668093/12567089/0ac42774-c372-11e5-97eb-00baf0fccc37.jpg" alt="OpenMRS"/>
 
-This is a boilerplate project using the following technologies:
-- [React](https://facebook.github.io/react/) and [React Router](https://reacttraining.com/react-router/) for the frontend
-- [Express](http://expressjs.com/) and [Mongoose](http://mongoosejs.com/) for the backend
-- [Sass](http://sass-lang.com/) for styles (using the SCSS syntax)
-- [Webpack](https://webpack.github.io/) for compilation
+# sans
 
+This repository contains the sans OpenMRS Open Web App.
 
-## Requirements
+> Add a description of what your app does here.
 
-- [Node.js](https://nodejs.org/en/) 6+
+For further documentation about OpenMRS Open Web Apps see
+[the wiki page](https://wiki.openmrs.org/display/docs/Open+Web+Apps+Module).
 
-```shell
+## Development
+
+### Production Build
+
+You will need NodeJS 4+ installed to do this. See the install instructions [here](https://nodejs.org/en/download/package-manager/).
+
+Once you have NodeJS installed, install the dependencies (first time only):
+
+```sh
 npm install
 ```
 
+Build the distributable using [Webpack](https://webpack.github.io/) as follows:
 
-## Running
+````sh
+npm run build:prod
+````
 
-Make sure to add a `config.js` file in the `config` folder. See the example there for more details.
+This will create a file called `sans.zip` file in the `dist` directory,
+which can be uploaded to the OpenMRS Open Web Apps module.
 
-Production mode:
+### Local Deploy
 
-```shell
-npm start
+To deploy directly to your local Open Web Apps directory, run:
+
+````
+npm run build:deploy
+````
+
+This will build and deploy the app to the `/home/gduchi/openmrs/server1/owa`
+directory. To change the deploy directory, edit the `LOCAL_OWA_FOLDER` entry in
+`config.json`. If this file does not exists, create one in the root directory
+that looks like:
+
+```js
+{
+  "LOCAL_OWA_FOLDER": "/home/gduchi/openmrs/server1/owa"
+}
 ```
 
-Development (Webpack dev server) mode:
+### Live Reload
 
-```shell
-npm run start:dev
+To use [Browersync](https://www.browsersync.io/) to watch your files and reload
+the page, inject CSS or synchronize user actions across browser instances, you
+will need the `APP_ENTRY_POINT` entry in your `config.json` file:
+
+```js
+{
+  "LOCAL_OWA_FOLDER": "/home/gduchi/openmrs/server1/owa",
+  "APP_ENTRY_POINT": "http://localhost:9994/openmrs/owa/sans/index.html"
+}
 ```
+Run Browsersync as follows:
+
+```
+npm run watch
+```
+
+### Extending
+
+Install [npm](http://npmjs.com/) packages dependencies as follows:
+
+````sh
+npm install --save <package>
+````
+
+To use the installed package, import it as follows:
+
+````js
+//import and assign to variable
+import variableName from 'package';
+````
+
+To contain package in vendor bundle, remember to add it to vendor entry point array, eg.:
+
+````js
+entry: {
+  app : `${__dirname}/app/js/owa.js`,
+  css: `${__dirname}/app/css/owa.css`,
+  vendor : [
+    'package',
+    ...//other packages in vendor bundle
+  ]
+},
+````
+
+Any files that you add manually must be added in the `app` directory.
+
+### Troubleshooting
+
+##### [HTTP access control (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
+
+You may experience problems due to the `Access-Control-Allow-Origin` header not
+being set by OpenMRS. To fix this you'll need to enable Cross-Origin Resource
+Sharing in Tomcat.
+
+See instructions [here](http://enable-cors.org/server_tomcat.html) for Tomcat 7 and [here](https://www.dforge.net/2013/09/16/enabling-cors-on-apache-tomcat-6/) for Tomcat 6.
+
+## License
+
+[MPL 2.0 w/ HD](http://openmrs.org/license/)

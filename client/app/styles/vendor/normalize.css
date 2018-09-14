@@ -46,6 +46,181 @@ summary { /* 1 */
 /**
  * Add the correct display in IE 9-.
  */
+.app {
+    margin: 3em auto;
+    width: 90%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.gif-item {
+    box-shadow: 2px 2px 4px 0 #ccc;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0 0 1.5em;
+    padding: 1em;
+    width: 100%;
+}
+
+.gif-item img {
+    width: 100%;
+}
+
+.gif-list {
+    column-gap: 1.5em;
+    font-size: .85em;
+    margin: 1.5em 0;
+    padding: 0;
+}
+
+.gif-modal {
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.main-block .bed-layout .block {
+    width: 14%;
+    padding: 0 10px 0 10px;
+    float: left;
+    position: relative;
+    margin-right: 20px;
+    min-height: 55px;
+    box-shadow: 1px 1px 3px #ccc;
+    border: 1px solid #ccc;
+    margin: 10px 5px;
+    word-wrap: break-word;
+}
+
+.bed-layout .block.add-block{
+    cursor: pointer;
+}
+
+.bed-layout .block .block-title {
+    padding: 10px;
+    background: #f9f9f9;
+}
+
+.bed-layout .block .block-content {
+    padding: 10px;
+}
+
+.bed-layout .block .left-block {
+    width: 80%;
+    float: left;
+    top: 50%;
+    position: absolute;
+    transform: translate(0, -50%);
+}
+
+.bed-layout .block .right-block {
+    position: absolute;
+    right: 10px;
+}
+
+.bed-layout .block .left-block span {
+    vertical-align: middle;
+}
+
+.bed-layout.block ul {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0;
+}
+
+.bed-layout .block ul.right-block li {
+    display: none;
+    text-align: right;
+    padding: 5px 0 0 0;
+}
+
+.bed-layout .block:hover ul.right-block li{
+    display: block;
+}
+
+.bed-layout .block ul.right-block li a {
+    color: #454e59;
+}
+
+.bed-layout .option {
+    margin-bottom: 20px;
+}
+
+.option .button {
+    background: -owg-linear-gradient(top,#fff,#ddd);
+    background: -webkit-linear-gradient(top,#fff,#ddd);
+    background: linear-gradient(top,#fff,#ddd);
+    border: 1px solid #ddd;
+    padding: 8px 20px;
+    display: inline-block;
+    line-height: 1.2em;
+    color: #363463;
+    cursor: pointer;
+    min-width: 0;
+    max-width: 300px;
+    text-decoration: none;
+    width: auto;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.option .button:hover {;
+    background: #e2e2e2;
+    border-color: #d0d0d0;
+}
+
+input {
+    display: block;
+    font-size: 22px;
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+}
+
+@media only screen and (min-width: 400px) {
+    .gif-list {
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .gif-list {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .gif-list {
+        -moz-column-count: 4;
+        -webkit-column-count: 4;
+        column-count: 4;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    .gif-list {
+        -moz-column-count: 5;
+        -webkit-column-count: 5;
+        column-count: 5;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .app {
+        width: 1140px;
+    }
+}
 
 audio,
 canvas,
