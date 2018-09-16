@@ -15,23 +15,26 @@ const API_KEY = '&api_key=dc6zaTOxFJmzC';
 export function saveGif(gif){
   const data = {}
 
-  if(!Number.isInteger(gif.rating)||gif.rating<0) gif.rating=0;
+  gif.rate = parseInt(gif.rate, 10);
+
+  if(!Number.isInteger(gif.rate)||gif.rate<0) gif.rate=0;
   data.source = gif.images.downsized.url;
   if (typeof gif.user != "undefined") data.creator = gif.user.display_name;
   else data.creator = "anonimo";
-  data.rating = gif.rating;
+  data.rating = gif.rate;
   console.log(data)
 
-  fetch('/api/gifs', { method: 'POST' })
-      .then(res => res.json())
-      .then(json => {
-        let gifs = data;
-        data.push(json);
-      });
-
-  return {
-      type: SAVE_GIF,
-      gif
+  return (dispatch) => {
+    fetch('/api/gifs', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(res=>res.json())
+    .then(res => console.log("done"));;
   }
 }
 
