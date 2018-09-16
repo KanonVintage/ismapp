@@ -2,6 +2,7 @@ import request from 'superagent';
 import { compose } from 'redux';
 import axios from 'axios';
 import 'whatwg-fetch';
+import http from 'http';
 
 //gifs easteregg
 export const OPEN_MODAL = 'OPEN_MODAL';
@@ -41,6 +42,47 @@ export function saveGif(gif){
 //obtener los gifs de internet
 export function requestGifs(term = null) {
     const data = request.get(`${API_URL}${term.replace(/\s/g, '+')}${API_KEY}`);
+    let second;
+
+    fetch('http://localhost:8000/topten/data', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res=>res.json())
+    .then(res => console.log(res));;
+
+    second = request.get('http://localhost:8000/topten/data')
+
+    var options = {
+      host: 'localhost',
+      port: 8000,
+      path: '/topten/data'
+    };
+
+/*
+    http.get(options, function(res) {
+      console.log("Got response: " + res);
+      console.log(res)
+    }).on('error', function(e) {
+      console.log("Got error: " + e.message);
+    });
+*/
+    var req = http.request(options, function(res) {
+      console.log('STATUS: ' + res.statusCode);
+      console.log('HEADERS: ' + JSON.stringify(res.headers));
+      res.setEncoding('utf8');
+      res.on('data', function (chunk) {
+        console.log('BODY: ' + chunk);
+      });
+    });
+
+    req.on('error', function(e) {
+      console.log('problem with request: ' + e.message);
+    });
+
     return {
         type: REQUEST_GIFS,
         payload: data

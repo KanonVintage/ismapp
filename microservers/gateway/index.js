@@ -1,9 +1,13 @@
     const thrift = require('thrift');
     const TopTenService = require('./gen-nodejs/TopTenService');
     const app = require('express')();
+    const cors = require('cors')
     const transport = thrift.TBufferedTransport;
     const protocol = thrift.TBinaryProtocol;
     
+
+    app.use(cors());
+
     function createConnection(host, port, thing, errorCallback) {
         const connection = thrift.createConnection(host, port, {
             transport : transport,
