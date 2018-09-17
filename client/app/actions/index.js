@@ -5,6 +5,7 @@ import 'whatwg-fetch';
 
 //gifs easteregg
 export const OPEN_MODAL = 'OPEN_MODAL';
+export const LOAD_GIFS = 'LOAD_GIFS';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const REQUEST_GIFS = 'REQUEST_GIFS';
 export const SAVE_GIF = 'SAVE_GIF';
@@ -22,7 +23,7 @@ export function saveGif(gif){
   if (typeof gif.user != "undefined") data.creator = gif.user.display_name;
   else data.creator = "anonimo";
   data.rating = gif.rate;
-  console.log(data)
+  //console.log(data)
 
   return (dispatch) => {
     fetch('/api/gifs', {
@@ -41,22 +42,23 @@ export function saveGif(gif){
 //obtener los gifs de internet
 export function requestGifs(term = null) {
     const data = request.get(`${API_URL}${term.replace(/\s/g, '+')}${API_KEY}`);
-
-    fetch('http://localhost:8000/topten/data', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res=>res.json())
-    .then(res => console.log(res));;
-
+    //console.log(data)
     return {
         type: REQUEST_GIFS,
         payload: data
     }
 }
+
+//obtener los gifs del top ten
+export function requestGiffys(term = null) {
+    let data = {};
+    data = JSON.parse(term)
+    return {
+        type: LOAD_GIFS,
+        payload: data
+    }
+}
+
 
 //abre el modal de cada gif seleccionado
 export function openModal(gif) {

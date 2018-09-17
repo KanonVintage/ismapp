@@ -3,7 +3,7 @@ var TopTenService = require('./gen-nodejs/TopTenService');
 var types = require('./gen-nodejs/topten_types');
 var MongoClient = require('mongodb').MongoClient;
 
-var url = "mongodb://guido.duchi:radwimps4@ds257732.mlab.com:57732/gif_db";
+var url = "mongodb://urltodatabase";
 var data=[];
 var gifs;
 
@@ -42,7 +42,7 @@ var server = thrift.createServer(TopTenService, {
 
     	//we send the information as an string because its easier as hell
 		gifs = JSON.stringify(data)
-		console.log(data);
+		//console.log(data);
 
         return gifs;
     }

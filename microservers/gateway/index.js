@@ -26,6 +26,8 @@ client.on('ready', function() {
 client.on('error', (err) => {
   console.log("Error " + err);
 });
+
+
 // use response-time as a middleware, for the documentation again
 app.use(responseTime());
 
@@ -47,9 +49,28 @@ app.get('/topten/:sometext', (req, res) => {
             stack: err.stack
         });
     });
-    return TopTen.topten(req.params.sometext)
-        .then(result => res.status(200).json(result))
-        .catch(err => res.status(500).json(err));
+
+    const key = "Reading this doesn't seem like the best use of your time.";
+
+    // Try fetching the result from Redis first in case we have it cached
+    return client.get(`topten:${key}`, (err, result) => {
+        // If that key exist in Redis store
+        if (result && JSON.parse(result).result.length>2) {
+            console.log("redis cache at its finest");
+            const resultJSON = JSON.parse(result).result;
+            return res.status(200).json(resultJSON);
+        } else { // Key does not exist in Redis store
+            // Fetch directly from topten thingy
+            return TopTen.topten(req.params.sometext)
+                .then(result => {
+                    //console.log(JSON.stringify({ source: 'Redis Cache', result, }))
+                    console.log("asking the database now");
+                    client.setex(`topten:${key}`, 3600, JSON.stringify({ source: 'Redis Cache', result, }));
+                    return res.status(200).json(result)
+                })
+                .catch(err => res.status(500).json(err));
+        }
+    })
 });
 
 app.listen(process.env.PORT || 8000);
