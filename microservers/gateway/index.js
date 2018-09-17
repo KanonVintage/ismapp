@@ -47,8 +47,6 @@ app.get('/topten/:sometext', (req, res) => {
             stack: err.stack
         });
     });
-    console.log("almost there asshole");
-
     return TopTen.topten(req.params.sometext)
         .then(result => res.status(200).json(result))
         .catch(err => res.status(500).json(err));

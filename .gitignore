@@ -3,6 +3,11 @@ dist/
 
 girafary_sec.pem
 
+girafary-lock.json
+
+#redis
+microservers/redis/
+
 # Config file
 config/config.js
 
