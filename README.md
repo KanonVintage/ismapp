@@ -26,7 +26,7 @@ pm2 start server.js -- --production
 
 ### Apache Thrift
 
-Inside the folder you'll find a gateway, redis, and topten folder, each of them contains a docker image
+Inside the folder microservices you'll find a gateway, redis, and topten folder, each of them contains a docker image
 
 To deploy then you need to have Docker and Docker compose up installed already
 
@@ -36,6 +36,6 @@ Once you have Docker and Dokocker-compose up installed, deploy the microservers:
 sudo docker-compose up
 ```
 
-##MONGODB
+## MONGODB
 
 This web app uses an online mongodb, this one must be specified on the config.js file and also inside the topten microservice.
