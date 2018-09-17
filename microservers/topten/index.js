@@ -38,7 +38,7 @@ var server = thrift.createServer(TopTenService, {
 		});
 
     	//we slice data, becasue you know, we only want the top 10 gifs
-    	data = data.slice(0,9)
+    	data = data.slice(0,10)
 
     	//we send the information as an string because its easier as hell
 		gifs = JSON.stringify(data)
