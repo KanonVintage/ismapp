@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "thrift": "^0.9.3",
-    "mongoose": "^5.0.11"
+    "mongoose": "^5.0.11",
+    "redis": "^2.8.0",
+    "thrift": "^0.9.3"
   }
 }

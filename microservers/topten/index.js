@@ -2,6 +2,7 @@ var thrift = require('thrift');
 var TopTenService = require('./gen-nodejs/TopTenService');
 var types = require('./gen-nodejs/topten_types');
 var MongoClient = require('mongodb').MongoClient;
+
 var url = "mongodb://username:password@url:port/db";
 var data=[];
 var gifs;
@@ -43,7 +44,7 @@ var server = thrift.createServer(TopTenService, {
 		gifs = JSON.stringify(data)
 		console.log(data);
 
-        return gifs + "\n";
+        return gifs;
     }
 });
     

@@ -12,6 +12,8 @@
   "dependencies": {
     "cors": "^2.8.4",
     "express": "^4.14.0",
+    "redis": "^2.8.0",
+    "response-time": "^2.3.2",
     "thrift": "^0.9.3"
   }
 }
