@@ -13,7 +13,15 @@ const redis = require('redis');
 //adding cors to app, dont need it but just in case y'know
 app.use(cors());
 //now the real thing begins here, we create and connect redis client to local instance.
-const client = redis.createClient();
+const client    = redis.createClient({
+    host : 'redis'})
+
+//after 3 hours trying to figure this out, we finally made it, yes!
+client.on('ready', function() {
+    redisIsReady = true;
+    console.log('redis is running');
+});
+
 // yknow, if that fails then we gotta show why, here we print redis errors to the console
 client.on('error', (err) => {
   console.log("Error " + err);
