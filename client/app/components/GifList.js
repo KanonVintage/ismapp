@@ -2,7 +2,7 @@ import React from 'react';
 import GifItem from './GifItem';
 
 const GifList = (props) => {
-	console.log(props.gifs)
+	//console.log(props.gifs)
     const gifItems = props.gifs.map((image) => {
     	if (image.id == null ){
     		return <GifItem key={image._id}

@@ -3,7 +3,7 @@ var TopTenService = require('./gen-nodejs/TopTenService');
 var types = require('./gen-nodejs/topten_types');
 var MongoClient = require('mongodb').MongoClient;
 
-var url = "mongodb://urltodatabase";
+var url = "mongodb://a:b@ds257732.mlab.com:57732/gif_db";
 var data=[];
 var gifs;
 

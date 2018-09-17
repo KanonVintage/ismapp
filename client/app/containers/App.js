@@ -11,7 +11,7 @@ import '../styles/styles.scss';
 class App extends React.Component {
     gifChange(term = null) {
         this.gifs = this.giffy;
-        console.log(this.gifs)
+        //console.log(this.gifs)
     }
 
     constructor(){
