@@ -3,6 +3,11 @@ import { compose } from 'redux';
 import axios from 'axios';
 import 'whatwg-fetch';
 
+//contenedores
+export const REQUEST_CONTENEDORES = 'REQUEST_CONTENEDORES';
+export const OPEN_CONMODAL = 'OPEN_CONMODAL';
+export const CLOSE_CONMODAL = 'CLOSE_CONMODAL';
+
 //gifs easteregg
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const LOAD_GIFS = 'LOAD_GIFS';
@@ -11,6 +16,36 @@ export const REQUEST_GIFS = 'REQUEST_GIFS';
 export const SAVE_GIF = 'SAVE_GIF';
 const API_URL = 'http://api.giphy.com/v1/gifs/search?q=';
 const API_KEY = '&api_key=dc6zaTOxFJmzC';
+
+
+
+
+//abre el modal del contenedor
+export function openConModal(tipo = null) {
+  return {
+      type: OPEN_CONMODAL,
+      tipo
+  }
+}
+
+//cierra el modal de cada gif sleccionado
+export function closeConModal() {
+    return {
+        type: CLOSE_CONMODAL
+    }
+}
+
+//obtener los contenedores de la base de datos
+export function requestContenedores(term = null) {
+    const data = request.get('/api/containers');
+    console.log(data)
+    return {
+        type: REQUEST_CONTENEDORES,
+        payload: data
+    }
+}
+
+
 
 
 export function saveGif(gif){

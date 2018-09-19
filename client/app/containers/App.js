@@ -6,6 +6,8 @@ import 'whatwg-fetch';
 import GifList from '../components/GifList';
 import GifModal from '../components/GifModal';
 import SearchBar from '../components/SearchBar';
+import Formulario from '../components/Formulario';
+import Lista from '../components/Lista';
 import '../styles/styles.scss';
 
 class App extends React.Component {

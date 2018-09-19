@@ -1,9 +1,9 @@
 # Compiled files
 dist/
 
-girafary_sec.pem
+ismapp.pem
 
-girafary-lock.json
+package-lock.json
 
 #redis
 microservers/redis/

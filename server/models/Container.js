@@ -1,0 +1,37 @@
+const mongoose = require('mongoose');
+
+const ContainerSchema = new mongoose.Schema({
+  contenedor			: String,
+  tipo				: String,
+  viaje					: String,
+  isocode				: String,
+  etapa					: String,
+  operador				: String,
+  puerto_origen			: String,
+  linea					: String,
+  agente_aduana			: String,
+  estado				: String,
+  nombre_aduana			: String,
+  nave_tiene			: Boolean,
+  nave_codigo			: String,
+  nave_nombre			: String,
+  aduana 				: String,
+  tatc					: String,
+  conco					: String,
+  fecha				: String,
+  hora				: String,
+  camion				: String,
+  contrato				: String,
+  cobro					: String,
+  origen 				: String,
+  dym					: String,
+  conductor				: String,
+  rut					: String,
+  empresa				: String,
+  cliente			: String,
+  frigorista		: Boolean,
+  booking			: String,
+  asignacion		: String,
+});
+
+module.exports = mongoose.model('Container', ContainerSchema);
