@@ -11,7 +11,7 @@ export default function contenedor(state = initialState, action) {
     switch (action.type) {
         case REQUEST_CONTENEDORES:
             return Object.assign({},state,{
-                data: action.payload.body.data,
+                data: action.payload.body,
                 selectedCon: {},
             })
         case SAVE_CONTENEDOR:

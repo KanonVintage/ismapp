@@ -22,25 +22,17 @@ class App extends React.Component {
     }
 
     componentDidMount(){
-        /*console.log(this.props.giffy)
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                console.log("loading...")
-                console.log(JSON.parse(xhr.responseText))
-            }
-        }
-        xhr.open('GET', 'http://localhost:8000/topten/hello', true);
-        xhr.send(null);*/
-        /*fetch('http://127.0.0.1:8000/topten/data', {
+        //this.props.actions.requestContenedores();
+        //console.log(this.props.contenedores)
+        fetch('/api/containers', {
           method: 'GET',
           headers: {
-            'Accept': 'application/json, text/plain, *//**',
+            'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json'
           }
         })
         .then(res=>res.json())
-        .then(json=>this.setState({giffy:json}));*/
+        .then(json=>this.setState({giffy:json}));
     }
 
     render() {
@@ -48,8 +40,9 @@ class App extends React.Component {
             <div>
                 <Formulario selectedCon   ={ this.props.selectedCon }
                             onPost        ={ () => this.props.actions.saveContenedor(this.props.selectedCon)}/>
-                <Lista />
-               
+                            <br/>
+                <Lista      contenedores  ={this.state.giffy}/>
+                
                 <GifList gifs={ this.props.gifs } onGifSelect={ selectedGif => this.props.actions.openModal({selectedGif}) } />
                 <GifModal modalIsOpen   ={ this.props.modalIsOpen }
                           selectedGif   ={ this.props.selectedGif }
@@ -67,6 +60,7 @@ function mapStateToProps(state) {
         modalIsOpen: state.modal.modalIsOpen,
         selectedGif: state.modal.selectedGif,
         selectedCon: state.contenedor.selectedCon,
+        contenedores: state.contenedor.data,
     };
 }
 

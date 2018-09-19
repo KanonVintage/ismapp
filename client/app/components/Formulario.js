@@ -29,7 +29,7 @@ class Formulario extends React.Component {
 	}
 
 	render(){ return (
-        <div>
+        <div className="container">
         	<Row>
 	        	<Col s={3}>
 		        	<Button waves='light' className="blue" onClick={() => {$('#ingreso').modal('open'); this.onClickType("ingreso")}}>Ingreso<Icon left>get_app</Icon></Button>
@@ -52,7 +52,7 @@ class Formulario extends React.Component {
 			  		<form onSubmit={this.handleSubmit}>
 		         		<Input s={8} label="contenedor "ref="in.contenedor" /> <Input s={4} label="viaje" ref="in.viaje"/>
 		          		<Input s={4} label="isocode" ref="in.isocode"/> <Input s={4} label="Tara" ref="in.tara"/> <Input s={4} label="etapa" ref="in.etapa"/>
-		          		<Input s={6} label="Operador" ref="in.operador" /> <Input s={6} label="Operador" ref="in.operador"/>
+		          		<Input s={6} label="Operador" ref="in.operador" /> <Input s={6} label="Puerto Origen" ref="in.puerto"/>
 		          		<Input s={6} label="Fecha" ref="in.fecha" /><Input s={6} label="Hora" ref="in.hora"/> 
 		          		<Button className="btn waves-effect waves-light" type="submit" name="action">Submit
 							<i className="material-icons right">send</i>
@@ -68,7 +68,7 @@ class Formulario extends React.Component {
 			   		<form onSubmit={this.handleSubmit}>
 		         		<Input s={8} label="contenedor "ref="contenedor" /> <Input s={4} label="viaje" ref="viaje"/>
 		          		<Input s={4} label="isocode" ref="isocode"/> <Input s={4} label="Tara" ref="tara"/> <Input s={4} label="etapa" ref="etapa"/>
-		          		<Input s={6} label="Operador" ref="operador" /> <Input s={6} label="Operador" ref="operador"/>
+		          		<Input s={6} label="Operador" ref="operador" /> <Input s={6} label="Puerto Origen" ref="puerto"/>
 		          		<Input s={6} label="Fecha" ref="fecha" /><Input s={6} label="Hora" ref="hora"/> 
 		          		<Button className="btn waves-effect waves-light" type="submit" name="action">Submit
 							<i className="material-icons right">send</i>

@@ -5,6 +5,7 @@ const ContainerSchema = new mongoose.Schema({
   tipo				: String,
   viaje					: String,
   isocode				: String,
+  tara          : String,
   etapa					: String,
   operador				: String,
   puerto_origen			: String,

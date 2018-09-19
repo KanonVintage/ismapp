@@ -39,7 +39,7 @@ export function closeConModal() {
 //obtener los contenedores de la base de datos
 export function requestContenedores(term = null) {
     const data = request.get('/api/containers');
-    console.log(term)
+
     return {
         type: REQUEST_CONTENEDORES,
         payload: data
@@ -48,13 +48,38 @@ export function requestContenedores(term = null) {
 
 //obtener los contenedores de la base de datos
 export function saveContenedor(dato = null) {
-    console.log(dato)
-    let contenedor = {};
+    //console.log(dato)
+    let container = {};
+
+    container.contenedor = dato.contenedor;
+    container.viaje = dato.viaje;
+    container.isocode = dato.isocode;
+    container.tara = dato.tara;
+    container.etapa = dato.etapa;
+    container.operador = dato.operador;
+    container.puerto_origen = dato.puerto;
+    container.fecha = dato.fecha;
+    container.hora = dato.hora;
     
-    return {
+    //console.log(container);
+
+    return (dispatch) => {
+      fetch('/api/containers', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(container)
+      })
+      .then(res=>res.json())
+      .then(res => console.log("done"));;
+    }
+
+    /*return {
         type: SAVE_CONTENEDOR,
         payload: dato
-    }
+    }*/
 }
 
 

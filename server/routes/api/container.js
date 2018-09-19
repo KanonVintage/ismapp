@@ -15,6 +15,7 @@ module.exports = (app) => {
         tipo              : req.body.tipo,
         viaje             : req.body.viaje,
         isocode           : req.body.isocode,
+        tara              : req.body.tara,
         etapa             : req.body.etapa,
         operador          : req.body.operador,
         puerto_origen     : req.body.puerto_origen,
