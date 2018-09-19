@@ -32,24 +32,24 @@ class App extends React.Component {
         }
         xhr.open('GET', 'http://localhost:8000/topten/hello', true);
         xhr.send(null);*/
-        fetch('http://127.0.0.1:8000/topten/data', {
+        /*fetch('http://127.0.0.1:8000/topten/data', {
           method: 'GET',
           headers: {
-            'Accept': 'application/json, text/plain, */*',
+            'Accept': 'application/json, text/plain, *//**',
             'Content-Type': 'application/json'
           }
         })
         .then(res=>res.json())
-        .then(json=>this.setState({giffy:json}));
+        .then(json=>this.setState({giffy:json}));*/
     }
 
     render() {
         return (
             <div>
-                <SearchBar  onTermChange={this.props.actions.requestGifs} 
-                            onGifChange ={() => this.props.actions.requestGiffys(this.state.giffy)}
-                            gifs        ={ this.props.gifs } 
-                            giffys      ={this.state.giffy}/>
+                <Formulario selectedCon   ={ this.props.selectedCon }
+                            onPost        ={ () => this.props.actions.saveContenedor(this.props.selectedCon)}/>
+                <Lista />
+               
                 <GifList gifs={ this.props.gifs } onGifSelect={ selectedGif => this.props.actions.openModal({selectedGif}) } />
                 <GifModal modalIsOpen   ={ this.props.modalIsOpen }
                           selectedGif   ={ this.props.selectedGif }
@@ -66,6 +66,7 @@ function mapStateToProps(state) {
         //giffy: state.gifs.giffys,
         modalIsOpen: state.modal.modalIsOpen,
         selectedGif: state.modal.selectedGif,
+        selectedCon: state.contenedor.selectedCon,
     };
 }
 
@@ -76,3 +77,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+ /*<SearchBar  onTermChange={this.props.actions.requestGifs} 
+                            onGifChange ={() => this.props.actions.requestGiffys(this.state.giffy)}
+                            gifs        ={ this.props.gifs } 
+                            giffys      ={this.state.giffy}/>*/

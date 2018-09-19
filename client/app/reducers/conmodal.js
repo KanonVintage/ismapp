@@ -1,7 +1,7 @@
 import { OPEN_CONMODAL, CLOSE_CONMODAL } from '../actions';
 
 const initialState =  {
-    selectedCon: null,
+    selectedCon: {},
     conmodalIsOpen: false
 };
 

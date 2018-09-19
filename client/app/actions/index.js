@@ -5,6 +5,7 @@ import 'whatwg-fetch';
 
 //contenedores
 export const REQUEST_CONTENEDORES = 'REQUEST_CONTENEDORES';
+export const SAVE_CONTENEDOR = 'SAVE_CONTENEDOR';
 export const OPEN_CONMODAL = 'OPEN_CONMODAL';
 export const CLOSE_CONMODAL = 'CLOSE_CONMODAL';
 
@@ -38,14 +39,23 @@ export function closeConModal() {
 //obtener los contenedores de la base de datos
 export function requestContenedores(term = null) {
     const data = request.get('/api/containers');
-    console.log(data)
+    console.log(term)
     return {
         type: REQUEST_CONTENEDORES,
         payload: data
     }
 }
 
-
+//obtener los contenedores de la base de datos
+export function saveContenedor(dato = null) {
+    console.log(dato)
+    let contenedor = {};
+    
+    return {
+        type: SAVE_CONTENEDOR,
+        payload: dato
+    }
+}
 
 
 export function saveGif(gif){
