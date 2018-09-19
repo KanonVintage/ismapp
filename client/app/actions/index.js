@@ -51,16 +51,30 @@ export function saveContenedor(dato = null) {
     //console.log(dato)
     let container = {};
 
-    container.contenedor = dato.contenedor;
-    container.viaje = dato.viaje;
-    container.isocode = dato.isocode;
-    container.tara = dato.tara;
-    container.etapa = dato.etapa;
-    container.operador = dato.operador;
-    container.puerto_origen = dato.puerto;
-    container.fecha = dato.fecha;
-    container.hora = dato.hora;
-    
+    if (dato.tipo=="salida"){
+      container.contenedor = dato.contenedor;
+      container.tipo = dato.tipo;
+      container.viaje = dato.viaje;
+      container.isocode = dato.isocode;
+      container.tara = dato.tara;
+      container.etapa = dato.etapa;
+      container.operador = dato.operador;
+      container.puerto_origen = dato.puerto;
+      container.fecha = dato.fecha;
+      container.hora = dato.hora;
+    } else if (dato.tipo=="ingreso"){
+      container.contenedor = dato.in_contenedor;
+      container.tipo = dato.tipo;
+      container.viaje = dato.in_viaje;
+      container.isocode = dato.in_isocode;
+      container.tara = dato.in_tara;
+      container.etapa = dato.in_etapa;
+      container.operador = dato.in_operador;
+      container.puerto_origen = dato.in_puerto;
+      container.fecha = dato.in_fecha;
+      container.hora = dato.in_hora;
+    }
+
     //console.log(container);
 
     return (dispatch) => {
@@ -73,7 +87,7 @@ export function saveContenedor(dato = null) {
         body: JSON.stringify(container)
       })
       .then(res=>res.json())
-      .then(res => console.log("done"));;
+      .then(res => {console.log("done");    location.reload(); });;
     }
 
     /*return {

@@ -36,8 +36,8 @@ const Lista = (props) => {
               Header: 'Etapa',
               accessor: "etapa"
             },{
-              Header: 'Puerto Origen',
-              accessor: "puerto"
+              Header: 'Tipo',
+              accessor: "tipo"
             },{
               Header: 'Fecha',
               accessor: "fecha"

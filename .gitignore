@@ -3,6 +3,8 @@ dist/
 
 ismapp.pem
 
+connect.txt
+
 package-lock.json
 
 #redis

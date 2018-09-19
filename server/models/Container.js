@@ -27,7 +27,7 @@ const ContainerSchema = new mongoose.Schema({
   origen 				: String,
   dym					: String,
   conductor				: String,
-  rut					: String,
+  ruc					: String,
   empresa				: String,
   cliente			: String,
   frigorista		: Boolean,

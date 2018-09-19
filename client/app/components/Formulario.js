@@ -17,6 +17,21 @@ class Formulario extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+	printDiv(divName) {
+	    const printContents = document.getElementById(divName).innerHTML;
+
+		let WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+
+		WinPrint.document.write('<html><head>');
+		WinPrint.document.write('<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">');
+		WinPrint.document.write('<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet">');
+		WinPrint.document.write('</head><body onload="print();close();">');
+		WinPrint.document.write(printContents);
+		WinPrint.document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script></body></html>');
+		WinPrint.document.close();
+		WinPrint.focus();
+	}
+
 	handleSubmit(e) {
 		e.preventDefault();
 		const formData = {};
@@ -50,16 +65,26 @@ class Formulario extends React.Component {
 				fixedFooter>
 			  	<Row>
 			  		<form onSubmit={this.handleSubmit}>
-		         		<Input s={8} label="contenedor "ref="in.contenedor" /> <Input s={4} label="viaje" ref="in.viaje"/>
-		          		<Input s={4} label="isocode" ref="in.isocode"/> <Input s={4} label="Tara" ref="in.tara"/> <Input s={4} label="etapa" ref="in.etapa"/>
-		          		<Input s={6} label="Operador" ref="in.operador" /> <Input s={6} label="Puerto Origen" ref="in.puerto"/>
-		          		<Input s={6} label="Fecha" ref="in.fecha" /><Input s={6} label="Hora" ref="in.hora"/> 
+		         		<Input s={8} label="contenedor "ref="in_contenedor" /> <Input s={4} label="viaje" ref="in_viaje"/>
+		          		<Input s={4} label="isocode" ref="in_isocode"/> <Input s={4} label="Tara" ref="in_tara"/> <Input s={4} label="etapa" ref="in_etapa"/>
+		          		<Input s={6} label="Operador" ref="in_operador" /> <Input s={6} label="Puerto Origen" ref="in_puerto"/>
+		          		<Input s={6} label="Fecha" ref="in_fecha" /><Input s={6} label="Hora" ref="in_hora"/> 
+		          		<br/>
+		          		<Col s={5}>
 		          		<Button className="btn waves-effect waves-light" type="submit" name="action">Submit
 							<i className="material-icons right">send</i>
 						</Button>
+						</Col>
+						<Col s={2}></Col>
+						<Col s={5}>
+						<Button s={5} className="btn orange accent-3 waves-light" onClick={()=>this.printDiv('ingreso')} type="button">Print
+							<i className="material-icons right">printer</i>
+						</Button>
+						</Col>
 					</form>
 	    	  	</Row>
 			</Modal>
+
 			<Modal
 				id = 'salida'
 				header='SALIDA'
@@ -70,9 +95,18 @@ class Formulario extends React.Component {
 		          		<Input s={4} label="isocode" ref="isocode"/> <Input s={4} label="Tara" ref="tara"/> <Input s={4} label="etapa" ref="etapa"/>
 		          		<Input s={6} label="Operador" ref="operador" /> <Input s={6} label="Puerto Origen" ref="puerto"/>
 		          		<Input s={6} label="Fecha" ref="fecha" /><Input s={6} label="Hora" ref="hora"/> 
+		          		<br/>
+		          		<Col s={5}>
 		          		<Button className="btn waves-effect waves-light" type="submit" name="action">Submit
 							<i className="material-icons right">send</i>
 						</Button>
+						</Col>
+						<Col s={2}></Col>
+						<Col s={5}>
+						<Button s={5} className="btn orange accent-3 waves-light" onClick={()=>this.printDiv('salida')} type="button">Print
+							<i className="material-icons right">printer</i>
+						</Button>
+						</Col>
 					</form>
 	          	</Row>
 			</Modal>
