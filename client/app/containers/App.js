@@ -41,13 +41,11 @@ class App extends React.Component {
                 <Formulario selectedCon   ={ this.props.selectedCon }
                             onPost        ={ () => this.props.actions.saveContenedor(this.props.selectedCon)}/>
                             <br/>
-                <Lista      contenedores  ={this.state.giffy}/>
+                <Lista      contenedores    ={this.state.giffy}
+                            report          ={this.props.gifs}
+                            downloadReport  = { () => this.props.actions.downloadReport(this.props.gifs, "Reporte", true) }/>
                 
-                <GifList gifs={ this.props.gifs } onGifSelect={ selectedGif => this.props.actions.openModal({selectedGif}) } />
-                <GifModal modalIsOpen   ={ this.props.modalIsOpen }
-                          selectedGif   ={ this.props.selectedGif }
-                          onRequestSave ={ () => this.props.actions.saveGif(this.props.selectedGif) }
-                          onRequestClose={ () => this.props.actions.closeModal() } />
+                
             </div>
         );
     }
@@ -75,4 +73,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
  /*<SearchBar  onTermChange={this.props.actions.requestGifs} 
                             onGifChange ={() => this.props.actions.requestGiffys(this.state.giffy)}
                             gifs        ={ this.props.gifs } 
-                            giffys      ={this.state.giffy}/>*/
+                            giffys      ={this.state.giffy}/>
+
+                            <GifList gifs={ this.props.gifs } onGifSelect={ selectedGif => this.props.actions.openModal({selectedGif}) } />
+                <GifModal modalIsOpen   ={ this.props.modalIsOpen }
+                          selectedGif   ={ this.props.selectedGif }
+                          onRequestSave ={ () => this.props.actions.saveGif(this.props.selectedGif) }
+                          onRequestClose={ () => this.props.actions.closeModal() } />
+                          */

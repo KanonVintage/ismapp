@@ -2,6 +2,26 @@ import React from 'react';
 import {Row, Col, Modal, Button, Icon, Input} from 'react-materialize'
 
 class Formulario extends React.Component {
+
+	getTimeF(){
+		var today = new Date();
+	    var dd = today.getDate();
+	    var mm = today.getMonth()+1; //January is 0!
+	    var yyyy = today.getFullYear();
+	    var h = today.getHours();
+	    var m = today.getMinutes();
+
+	    if(dd<10) { dd = '0'+dd } 
+	    if(mm<10) { mm = '0'+mm } 
+	    if(h<10) { h = '0'+ h }
+	    if(m<10) { m = '0'+ m } 
+	    var fecha = mm + '/' + dd + '/' + yyyy 
+	    var hora  = h + ':' + m;
+	    this.state.eltime.fecha = fecha;
+	    this.state.eltime.hora = hora;
+	}
+
+
 	//console.log(gif)
 	onClickType(term){
 		//console.log(this.props)
@@ -14,6 +34,7 @@ class Formulario extends React.Component {
 
 	constructor(props) {
 		super(props);
+		this.state = {eltime: {}};
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
@@ -37,26 +58,41 @@ class Formulario extends React.Component {
 		const formData = {};
 		for (const field in this.refs) {
 		  this.props.selectedCon[field] = this.refs[field].state.value;
+		  this.props.selectedCon.fecha = this.state.eltime.fecha;
+		  this.props.selectedCon.hora = this.state.eltime.hora;
+		  this.props.selectedCon.in_fecha = this.state.eltime.fecha;
+		  this.props.selectedCon.in_hora = this.state.eltime.hora;
 		}
 		//console.log('-->', this.props.selectedCon);
 		this.props.onPost(this.props.selectedCon);
 		//this.props.selectedCon = {}
 	}
 
-	render(){ return (
+	render(){ 
+		return (
         <div className="container">
         	<Row>
-	        	<Col s={3}>
-		        	<Button waves='light' className="blue" onClick={() => {$('#ingreso').modal('open'); this.onClickType("ingreso")}}>Ingreso<Icon left>get_app</Icon></Button>
+	        	<Col s={5}>
+		        	<Button waves='light' 
+		        		className="blue" 
+		        		onClick={() => {
+		        			$('#ingreso').modal('open'); this.onClickType("ingreso");
+		        			this.getTimeF();
+		        		}}>Ingreso<Icon left>get_app</Icon>
+	        		</Button>
 				</Col>
-				<Col s={3}>
-					<Button waves='light' className="red darken-2" onClick={() => {$('#salida').modal('open'); this.onClickType("salida")}}>Salida<Icon left>exit_to_app</Icon></Button>
+								<Col s={2}>
 				</Col>
-				<Col s={2}>
+				<Col s={5}>
+					<Button waves='light' 
+						className="red darken-2" 
+						onClick={() => {
+							$('#salida').modal('open'); this.onClickType("salida")
+							this.getTimeF();
+						}}>Salida<Icon left>exit_to_app</Icon>
+					</Button>
 				</Col>
-				<Col s={4}>
-					<Button waves='light' className="green lighten-2" onClick={() => {$('#reporte').modal('open'); this.onClickType("reporte")}}>Reporte<Icon right>menu</Icon></Button>
-				</Col>
+
 			</Row>
 
 			<Modal
@@ -67,9 +103,7 @@ class Formulario extends React.Component {
 			  		<form onSubmit={this.handleSubmit}>
 		         		<Input s={8} label="contenedor "ref="in_contenedor" /> <Input s={4} label="viaje" ref="in_viaje"/>
 		          		<Input s={4} label="isocode" ref="in_isocode"/> <Input s={4} label="Tara" ref="in_tara"/> <Input s={4} label="etapa" ref="in_etapa"/>
-		          		<Input s={6} label="Operador" ref="in_operador" /> <Input s={6} label="Puerto Origen" ref="in_puerto"/>
-		          		<Input s={6} label="Fecha" ref="in_fecha" /><Input s={6} label="Hora" ref="in_hora"/> 
-		          		<br/>
+		          		<Input s={6} label="Operador" ref="in_operador" /> <Input s={6} label="Puerto Origen" ref="in_puerto"/>		          		<br/>
 		          		<Col s={5}>
 		          		<Button className="btn waves-effect waves-light" type="submit" name="action">Submit
 							<i className="material-icons right">send</i>
@@ -110,15 +144,6 @@ class Formulario extends React.Component {
 					</form>
 	          	</Row>
 			</Modal>
-			<Modal
-				id = 'reporte'
-				header='REPORTE'
-				fixedFooter>
-				<Row>
-	         		<Input s={8} label="Contenedor"/> <Input s={4} label="Viaje"/>
-        	  	</Row>
-			</Modal>
-
         </div>
     )}
 };

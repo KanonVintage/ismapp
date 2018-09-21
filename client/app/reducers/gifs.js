@@ -1,8 +1,9 @@
 import { REQUEST_GIFS } from '../actions';
 import { LOAD_GIFS } from '../actions';
+import { DOWN_REPORT } from '../actions';
 
 const initialState =  {
-    data: [],
+    data: {},
 };
 
 export default function gifs(state = initialState, action) {
@@ -15,6 +16,11 @@ export default function gifs(state = initialState, action) {
         	//console.log(action)
             return Object.assign({},state,{
                 data: action.payload
+            })
+        case DOWN_REPORT:
+            //console.log(action)
+            return Object.assign({},state,{
+                //data: null
             })
         default:
             return state;
