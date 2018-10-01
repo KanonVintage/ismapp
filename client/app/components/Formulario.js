@@ -28,9 +28,7 @@ class Formulario extends React.Component {
 		this.props.selectedCon.tipo = term;
 	}
 
-	clearFocus(){
-     Materialize.updateTextFields();
-}
+	clearFocus(){ Materialize.updateTextFields();}
 
 	constructor(props) {
 		super(props);
@@ -102,7 +100,7 @@ class Formulario extends React.Component {
 			  	<Row>
 			  		<form onSubmit={this.handleSubmit}>
 		         		<Input s={8} label="contenedor "ref="in_contenedor" /> <Input s={4} label="viaje" ref="in_viaje"/>
-		          		<Input s={4} label="isocode" ref="in_isocode"/> <Input s={4} label="Tara" ref="in_tara"/> <Input s={4} label="etapa" ref="in_etapa"/>
+		          		<Input s={4} label="isocode" ref="in_isocode"/> <Input s={4} label="Tara" ref="in_tara"/> <Input s={4} label="placa" ref="in_etapa"/>
 		          		<Input s={6} label="Operador" ref="in_operador" /> <Input s={6} label="Puerto Origen" ref="in_puerto"/>		          		<br/>
 		          		<Col s={5}>
 		          		<Button className="btn waves-effect waves-light" type="submit" name="action">Submit
@@ -126,9 +124,8 @@ class Formulario extends React.Component {
 			    <Row>
 			   		<form onSubmit={this.handleSubmit}>
 		         		<Input s={8} label="contenedor "ref="contenedor" /> <Input s={4} label="viaje" ref="viaje"/>
-		          		<Input s={4} label="isocode" ref="isocode"/> <Input s={4} label="Tara" ref="tara"/> <Input s={4} label="etapa" ref="etapa"/>
+		          		<Input s={4} label="isocode" ref="isocode"/> <Input s={4} label="Tara" ref="tara"/> <Input s={4} label="placa" ref="etapa"/>
 		          		<Input s={6} label="Operador" ref="operador" /> <Input s={6} label="Puerto Origen" ref="puerto"/>
-		          		<Input s={6} label="Fecha" ref="fecha" /><Input s={6} label="Hora" ref="hora"/> 
 		          		<br/>
 		          		<Col s={5}>
 		          		<Button className="btn waves-effect waves-light" type="submit" name="action">Submit

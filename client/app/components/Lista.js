@@ -99,7 +99,7 @@ class Lista extends React.Component {
                       matchSorter(rows, filter.value, { keys: ["hora"] }),
                     filterAll: true
               },{
-                Header: 'Etapa',
+                Header: 'Placa',
                 accessor: "etapa",
                 filterMethod: (filter, rows) =>
                       matchSorter(rows, filter.value, { keys: ["etapa"] }),

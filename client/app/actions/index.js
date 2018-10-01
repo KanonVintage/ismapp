@@ -188,19 +188,36 @@ export function saveContenedor(dato = null) {
       container.hora = dato.in_hora;
     }
 
+    let mensaje = "Se ha agregado nueva informacion al sistema \n\n"
+    mensaje += "Contenedor: " + container.contenedor + "\n";
+    mensaje += "Usuario: " + "usuario@prueba1" + "\n";
+    mensaje += "Tipo: " + container.tipo + "\n";
+    mensaje += "Operador: " + container.operador + "\n";
+    mensaje += "Fecha: " + container.fecha + "\n";
+    mensaje += "Hora: " + container.hora + "\n";
     //console.log(container);
 
     return (dispatch) => {
-      fetch('/api/containers', {
+
+      fetch('/send', {
         method: 'POST',
         headers: {
-          'Accept': 'application/json, text/plain, */*',
+          'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(container)
+        body: JSON.stringify({
+          name: "Nueva Informacion Agregada",
+          email: "Guido Duchi Prueba",
+          message: mensaje
+        })
       })
-      .then(res=>res.json())
-      .then(res => {console.log("done");    location.reload(); });;
+      .then((res) => res.json())
+      .then((res) => {
+        console.log('here is the response: ', res);
+      })
+      .catch((err) => {
+        console.error('here is the error: ', err);
+      })
     }
 
     /*return {
@@ -270,4 +287,17 @@ export function closeModal() {
     return {
         type: CLOSE_MODAL
     }
+}
+
+export function saver(){
+       fetch('/api/containers', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(container)
+      })
+      .then(res=>res.json())
+      .then(res => {console.log("done");    location.reload(); });;
 }
